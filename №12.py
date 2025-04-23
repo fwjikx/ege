@@ -1,13 +1,10 @@
-for n in range(4, 100):
-    s = '2' + '5' * n
-    while '25' in s or '355' in s or '555' in s:
-        if '25' in s:
-            s = s.replace('25', '5', 1)
-        if '355' in s:
-            s = s.replace('355', '52', 1)
-        if '555' in s:
-            s = s.replace('555', '3', 1)
-    if s.count('3') == 2:
-        print(n)
-        break
+a = '1' + '9' * 100
+while '19' in a or '299' in a or '3999' in a:
+    if '19' in a:
+        a = a.replace('19', '2', 1)
+    if '299' in a:
+        a = a.replace('299', '3', 1)
+    if '3999' in a:
+        a = a.replace('3999', '1', 1)
 
+print(a)
