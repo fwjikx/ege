@@ -31,3 +31,24 @@ for x in range(0, 50):
         setpos(-x * m, -y * m)
         dot(5, 'red')
 done()
+
+
+
+
+#это мне
+from turtle import *
+
+tracer(0)
+left(90)
+m = 20
+speed(200)
+for i in range(5):
+    forward(7*m)
+    rt(120)
+
+up()
+for x in range(-1,10):
+    for y in range(-10,15):
+        goto(x*m,y*m)
+        dot(5)
+done()
