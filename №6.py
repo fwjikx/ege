@@ -1,38 +1,30 @@
 from turtle import *
 
 m = 10
-
-speed(100000)
-right(90)
-pen()
-
-
-for i in range(2):
-    forward(10 * m)
-    right(90)
-    forward(18 * m)
-    right(90)
-penup()
-forward(5 * m)
-right(90)
-forward(7 * m)
-left(90)
+tracer(0)
 pendown()
-for i in range(2):
-    forward(10 * m)
-    right(90)
-    forward(7 * m)
-    right(90)
+
+# ниже переписываем алгоритм из задачи
+for i in range(4):
+    fd(3 * m)
+    lt(270)
+    fd(5 * m)
+    rt(90)
+lt(270)
+for i in range(3):
+    fd(5 * m)
+    rt(90)
+    fd(3 * m)
+    lt(270)
 
 penup()
-speed(2000)
-for x in range(0, 50):
-    for y in range(0, 25):
-        setpos(-x * m, -y * m)
-        dot(5, 'red')
-done()
-
-
+for x in range(-20, 20):
+    for y in range(-20, 20):
+        goto(x * m, y * m)
+        dot(3, "red")
+update()
+exitonclick()  # выход по нажатию
+done()  # если exit не работает
 
 
 #это мне
