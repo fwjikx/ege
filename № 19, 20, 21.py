@@ -34,3 +34,54 @@ def f(x, m):
 print('#19', [s for s in range(1, 97) if f(s, 2)])
 print('#20', [s for s in range(1, 97) if not (f(s, 1)) and f(s, 3)])
 print('#21', [s for s in range(1, 97) if not (f(s, 2)) and f(s, 4)])
+
+
+#одна куча 
+from functools import lru_cache
+
+
+def step(p):
+    res = []
+    if p > 0:
+        res += p + 1, p * 3
+    return res
+
+
+#print(step(11))
+
+
+@lru_cache()
+def game(p):
+    if p >= 268: return 0
+    if any(game(p1) == 0 for p1 in step(p)): return 1
+    if all(game(p1) == 1 for p1 in step(p)): return 2 # в 19 при неудачном ходе пети меняется на any 
+    if any(game(p1) == 2 for p1 in step(p)): return 3
+    if all(game(p1) in (1, 3) for p1 in step(p)): return 4
+
+
+for p in range(1, 268):
+    if game(p) == 2: # зависит от того за сколько ходов должна закончиться игра 
+        print(p)
+
+#две кучи
+from functools import lru_cache
+
+
+def step(p):
+    (a, b) = p
+    return (a + 1, b), (a, b + 1), (a * 3, b), (a, b * 3)
+
+
+@lru_cache(None)
+def game(p):
+    if sum(p) >= 175: return 0
+    if any(game(p1) == 0 for p1 in step(p)): return 1
+    if all(game(p1) == 1 for p1 in step(p)): return 2 # в 19 при неудачном ходе пети меняется на any 
+    if any(game(p1) == 2 for p1 in step(p)): return 3
+    if all(game(p1) in (1, 3) for p1 in step(p)): return 4
+
+
+for s in range(1, 155):
+    p = (19, s)
+    if game(p) == 4: # зависит от того за сколько ходов должна закончиться игра (обычно в 19=2, в 20=3, в 21=4)
+        print(s)
